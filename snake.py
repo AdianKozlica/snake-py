@@ -55,10 +55,6 @@ def main():
         elif playfield[head_y][head_x] == 'O':
             game_over()
 
-        if playfield[head_y][head_x] == 'A':
-            apple_avail = False
-            snake.append((prev_x, prev_y))
-
         os.system('clear')
         
         curr_datetime = datetime.now()
@@ -73,14 +69,18 @@ def main():
         if apple_avail:
             playfield[apple_x][apple_y] = 'A'
 
-        snake[0] = (head_x, head_y)
-        playfield[head_y][head_x] = 'O'
-
         for i in range(1, len(snake)):
             playfield[prev_y][prev_x] = 'O'
             temp_prev_x, temp_prev_y = snake[i]
             snake[i] = (prev_x, prev_y)
             prev_x, prev_y = temp_prev_x, temp_prev_y
+
+        if playfield[head_y][head_x] == 'A':
+            apple_avail = False
+            snake.append((prev_x, prev_y))
+
+        snake[0] = (head_x, head_y)
+        playfield[head_y][head_x] = 'O'
 
         for row in playfield:
             for col in row:
