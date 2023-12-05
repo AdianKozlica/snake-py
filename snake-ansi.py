@@ -5,7 +5,7 @@ import time
 import random
 import keyboard
 
-PLAYFIELD_SIZE = 32 # MINIMUM SHOULD BE 10
+PLAYFIELD_SIZE = 32
 
 def get_apple_coord():
     x = random.randint(0, PLAYFIELD_SIZE - 1)
